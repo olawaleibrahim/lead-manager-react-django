@@ -1,45 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { getLeads } from '../../actions/leads';
 
-class Leads extends Component {
-    static propTypes = {
-        leads: PropTypes.array.isRequired
-    };
+export const Leads = (props) => {
 
-    componentDidMount() {
-        this.props.getLeads();
-    }
+    useEffect(() => {
+        props.getLeads();
+    }, [0]);
 
-    render() {
-        return (
-            <Fragment>
-                <h2>Leads</h2>
-                <table className='table table-striped'>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Message</th>
+    return (
+        <Fragment>
+            <h2>Leads</h2>
+            <table className='table table-striped'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.leads.map(lead => (
+                        <tr key={lead.id}>
+                            <td>{lead.id}</td>
+                            <td>{lead.name}</td>
+                            <td>{lead.email}</td>
+                            <td>{lead.message}</td>
+                            <td><button className='btn btn-danger btn-sm'>Delete</button></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.leads.map(lead => (
-                            <tr key={lead.id}>
-                                <td>{lead.id}</td>
-                                <td>{lead.name}</td>
-                                <td>{lead.email}</td>
-                                <td>{lead.message}</td>
-                                <td><button className='btn btn-danger btn-sm'>Delete</button></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </Fragment>
-        )
-    }
+                    ))}
+                </tbody>
+            </table>
+        </Fragment>
+    )
+
 };
 
 const mapStateToProps = (state) => ({
