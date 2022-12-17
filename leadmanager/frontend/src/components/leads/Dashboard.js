@@ -7,7 +7,7 @@ class Dashboard extends Component {
     return (
       <Fragment>
         <Form />
-        <Leads />        
+        <Leads />
       </Fragment>
     )
   }
