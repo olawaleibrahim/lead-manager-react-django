@@ -1,10 +1,9 @@
-
-const { node } = require("prop-types");
-const nodeExternals = require("webpack-node-externals");
+const { node } = import("prop-types");
+const nodeExternals = import("webpack-node-externals");
 
 module.exports = {
-    target: "node",
-    externals: [nodeExternals()],
+    // target: "node",
+    externals: [nodeExternals],
     externalsPresets: { node: true },
     module: {
         rules: [
