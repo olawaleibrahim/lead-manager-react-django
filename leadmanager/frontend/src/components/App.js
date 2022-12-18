@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Header from "./layouts/Header";
 import Dashboard from "./leads/Dashboard";
-import { Alerts } from "./layouts/alerts";
+import { Alerts } from "./layouts/Alerts";
 
 import { Provider } from "react-redux";
 import { Provider as AlertProvider } from "react-alert";
