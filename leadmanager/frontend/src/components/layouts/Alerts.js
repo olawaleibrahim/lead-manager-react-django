@@ -1,33 +1,29 @@
 import React, { Component, Fragment, useEffect, useRef } from 'react';
-import { useAlert } from "react-alert";
+import { withAlert } from "react-alert";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-export const Alerts = (props) => {
-    // componentDidMount() {
-    //     this.props.alert.show("It Works!");
-    // }
+export class Alerts extends Component {
+    static propTypes = {
+        error: PropTypes.object.isRequired
+    };
 
-    const alert = useAlert();
-    const mounted = useRef();
-
-    useEffect(() => {
-        console.log("WPRDED", props);
-        if (!mounted.current) {
-            mounted.current = true;
-            alert.show("MOUNTED");
-        } else {
-            alert.show("UPDATED");
+    componentDidUpdate(prevProps) {
+        const { error, alert } = this.props;
+        if (error !== prevProps.error) {
+            if (error.msg.name) alert.error("Name is required");
         }
-    }, [0]);
+    }
 
-    return (
-        <Fragment />
-    )
+    render() {
+        return (
+            <Fragment />
+        )
+    }
 };
 
 const mapStateToProps = state => ({
     error: state.errors.msg
 })
 
-export default connect(mapStateToProps)(Alerts);
+export default connect(mapStateToProps)(withAlert(Alerts));
