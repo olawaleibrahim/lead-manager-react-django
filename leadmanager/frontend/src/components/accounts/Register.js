@@ -51,7 +51,7 @@ export class Register extends Component {
                                 value={password} />
                         </div>
                         <div className='form-group'>
-                            <label>Password2</label>
+                            <label>Confirm password</label>
                             <input
                                 type="password2"
                                 className="form-control"
@@ -59,6 +59,7 @@ export class Register extends Component {
                                 onChange={this.onChange}
                                 value={password2} />
                         </div>
+                        <div></div>
                         <div className='form-group'>
                             <button type='submit' className='btn btn-primary'>
                                 Register
