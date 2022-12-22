@@ -22,7 +22,7 @@ const PrivateRoute = ({ component, auth }) => {
     if (auth.isLoading) {
         return <h2>Loading...</h2>
     } else if (!auth.isLoading) {
-        return !auth.isAuthenticated ?
+        return auth.isAuthenticated ?
             <div>
                 {component}
                 <Outlet />

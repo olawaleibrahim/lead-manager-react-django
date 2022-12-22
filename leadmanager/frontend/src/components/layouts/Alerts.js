@@ -12,6 +12,7 @@ export class Alerts extends Component {
         const { error, alert } = this.props;
         if (error !== prevProps.error) {
             if (error.msg.name) alert.error("Name is required");
+            if (error.msg.email) alert.error("Email is required");
         }
     }
 
